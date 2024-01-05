@@ -12,3 +12,11 @@ toDigits num
              in recmod (div x 10) (newX : li)
 
 toDigitsRev num = reverse (toDigits num)
+
+-- Exercise 2
+doubleEveryOther :: [Integer] -> [Integer]
+doubleEveryOther digits = reverse (skipEveryOther (* 2) (reverse digits))
+  where
+    skipEveryOther f [] = []
+    skipEveryOther f [x] = x : skipEveryOther f []
+    skipEveryOther f (x : y : xs) = x : f y : skipEveryOther f xs
