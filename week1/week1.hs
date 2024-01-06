@@ -20,3 +20,10 @@ doubleEveryOther digits = reverse (skipEveryOther (* 2) (reverse digits))
     skipEveryOther f [] = []
     skipEveryOther f [x] = x : skipEveryOther f []
     skipEveryOther f (x : y : xs) = x : f y : skipEveryOther f xs
+
+-- Exercise 3
+sumDigits :: [Integer] -> Integer
+sumDigits numList = sum (expandDigits numList)
+  where
+    expandDigits [] = []
+    expandDigits (x : xs) = toDigits x ++ expandDigits xs
