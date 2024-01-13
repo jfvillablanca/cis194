@@ -27,3 +27,10 @@ sumDigits numList = sum (expandDigits numList)
   where
     expandDigits [] = []
     expandDigits (x : xs) = toDigits x ++ expandDigits xs
+
+-- Exercise 4
+validate creditCardNumber
+    | evaluate creditCardNumber `mod` 10 == 0 = True
+    | otherwise = False
+  where
+    evaluate cc = sumDigits (doubleEveryOther (toDigits cc))
